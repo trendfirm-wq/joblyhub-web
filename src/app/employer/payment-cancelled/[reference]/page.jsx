@@ -37,11 +37,11 @@ export default function PaymentCancelled() {
           }}
         >
           <Link
-            href="/job-payment/[jobId]"
-            className="btn btn-primary"
-          >
-            Try Again
-          </Link>
+  href={`/employer/job-payment/${reference}`}
+  className="btn btn-primary"
+>
+  Try Again
+</Link>
 
           <Link
             href="/employer/dashboard"
