@@ -19,7 +19,9 @@ const API_URL =
   "https://joblyhub-tc8k.onrender.com/api";
 
 export default function EmployerPaymentSuccess() {
-  
+  useEffect(() => {
+  document.title = "Payment Success | JoblyHub";
+}, []);
   const [searchParams] = useSearchParams();
 
  const router = useRouter();

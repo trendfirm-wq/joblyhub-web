@@ -7,13 +7,16 @@ import {
   ShieldCheck,
   Briefcase,
 } from "lucide-react";
-
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import "@/styles/App.css";
 
 export default function PricingPage() {
+  useEffect(() => {
+    document.title = "Pricing | JoblyHub";
+  }, []);
   return (
     <div className="site">
       <Navbar />

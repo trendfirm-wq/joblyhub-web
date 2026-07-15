@@ -43,6 +43,9 @@ const interviewMethods = [
 ];
 
 export default function EmployerApplications() {
+  useEffect(() => {
+  document.title = "Submissions | JoblyHub";
+}, []);
 const [token, setToken] = useState("");
 
 useEffect(() => {

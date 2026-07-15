@@ -29,6 +29,9 @@ const API_URL =
   "https://joblyhub-tc8k.onrender.com/api";
 
 export default function NewArticle() {
+  useEffect(() => {
+  document.title = "Articles | JoblyHub";
+}, []);
 const router = useRouter();
 const { id } = useParams();
 

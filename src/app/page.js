@@ -1,5 +1,11 @@
-import Home from "@/pages/Home";
+import HomeClient from "../components/HomeClient";
 
-export default function Page() {
-  return <Home />;
+export const metadata = {
+  title: "Home | Joblyhub",
+  description:
+    "Connecting Opportunities, Building Trust. Find jobs, recruit top talent, and grow your career with JoblyHub.",
+};
+
+export default function HomePage() {
+  return <HomeClient />;
 }

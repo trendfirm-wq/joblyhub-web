@@ -61,6 +61,9 @@ const jobTypes = [
 ];
 
 export default function JobsPage() {
+  useEffect(() => {
+  document.title = "Find Jobs | JoblyHub";
+}, []);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

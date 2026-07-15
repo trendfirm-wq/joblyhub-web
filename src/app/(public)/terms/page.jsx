@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { useEffect } from "react";
+
 import {
   AlertTriangle,
   Ban,
@@ -22,6 +24,9 @@ import {
 import InfoPage from "@/pages/InfoPage";
 import "@/styles/App.css";
 export default function Terms() {
+    useEffect(() => {
+    document.title = "Terms & Use | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="Terms of Use"

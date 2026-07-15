@@ -81,6 +81,9 @@ const jobTypes = [
 ];
 
 export default function EmployerPostJob() {
+  useEffect(() => {
+  document.title = "Post Job | JoblyHub";
+}, []);
 const router = useRouter();
 
  const [user, setUser] = useState({});

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 
 import {
@@ -18,6 +19,9 @@ import "@/styles/App.css";
 import InfoPage from "@/pages/InfoPage";
 
 export default function Contact() {
+    useEffect(() => {
+    document.title = "Contact Us | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="Contact JoblyHub"

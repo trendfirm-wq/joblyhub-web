@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 
 import {
@@ -20,6 +21,9 @@ import {
 import InfoPage from "@/pages/InfoPage";
 import "@/styles/App.css";
 export default function HowItWorks() {
+    useEffect(() => {
+    document.title = "How It Works | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="How It Works"

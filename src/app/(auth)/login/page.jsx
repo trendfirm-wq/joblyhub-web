@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
@@ -13,6 +13,9 @@ const API_URL =
   "https://joblyhub-tc8k.onrender.com/api";
 
 export default function Login() {
+    useEffect(() => {
+    document.title = "Login | JoblyHub";
+  }, []);
   const router = useRouter();
 
   const [form, setForm] = useState({

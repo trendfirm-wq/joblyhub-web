@@ -16,6 +16,9 @@ const API_URL =
  
 
 export default function JobPaymentPage() {
+  useEffect(() => {
+  document.title = "Payment | JoblyHub";
+}, []);
  const { jobId } = useParams();
 const router = useRouter();
 

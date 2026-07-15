@@ -15,9 +15,9 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import HomePoll from "../components/HomePoll";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import HomePoll from "./HomePoll";
 
 import "../styles/App.css";
 const API_URL =

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
+import { useEffect } from "react";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -21,6 +21,9 @@ import {
 import InfoPage from "@/pages/InfoPage";
 
 export default function Safety() {
+    useEffect(() => {
+    document.title = "Safety & Fraud Alert | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="Safety & Fraud Alert"

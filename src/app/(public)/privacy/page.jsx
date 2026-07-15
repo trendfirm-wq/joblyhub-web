@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import {
   Database,
   FileText,
@@ -19,6 +21,9 @@ import {
 import InfoPage from "@/pages/InfoPage";
 
 export default function Privacy() {
+    useEffect(() => {
+    document.title = "Privacy Policy | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="Privacy Policy"

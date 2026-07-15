@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 
 import {
@@ -10,6 +11,9 @@ import {
 import Navbar from "@/components/Navbar";
 import "@/styles/App.css";
 export default function RegisterChoice() {
+    useEffect(() => {
+    document.title = "Create Account | JoblyHub";
+  }, []);
   return (
     <>
       <Navbar />

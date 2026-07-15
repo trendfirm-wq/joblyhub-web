@@ -81,6 +81,9 @@ const jobTypes = [
 ];
 
 export default function EmployerEditJob() {
+  useEffect(() => {
+  document.title = "Edit Job | JoblyHub";
+}, []);
   const { id } = useParams();
 const router = useRouter();
 

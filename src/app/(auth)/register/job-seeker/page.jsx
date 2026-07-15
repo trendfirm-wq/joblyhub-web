@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -47,6 +47,9 @@ const experienceLevels = [
 ];
 
 export default function JobSeekerRegister() {
+    useEffect(() => {
+    document.title = "Job Seeker Registration | JoblyHub";
+  }, []);
   const router = useRouter();
 
   const [form, setForm] = useState({

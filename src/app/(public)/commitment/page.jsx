@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 
 import {
   CheckCircle2,
@@ -16,6 +17,9 @@ import "@/styles/App.css";
 import InfoPage from "@/pages/InfoPage";
 
 export default function Commitment() {
+    useEffect(() => {
+    document.title = "Our Commitment | JoblyHub";
+  }, []);
   return (
     <InfoPage
       eyebrow="Our Commitment"

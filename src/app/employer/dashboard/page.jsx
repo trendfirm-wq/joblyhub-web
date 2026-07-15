@@ -21,6 +21,9 @@ const API_URL =
   "https://joblyhub-tc8k.onrender.com/api";
 
 export default function EmployerDashboard() {
+    useEffect(() => {
+    document.title = "Employer Dashboard | JoblyHub";
+  }, []);
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
 

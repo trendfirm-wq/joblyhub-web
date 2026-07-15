@@ -29,11 +29,17 @@ const API_URL =
   "https://joblyhub-tc8k.onrender.com/api";
 
 export default function JobDetails() {
+
   const { id } = useParams();
 
   const [job, setJob] = useState(null);
   const [loadingJob, setLoadingJob] = useState(true);
   const [error, setError] = useState('');
+   useEffect(() => {
+  document.title = job?.title
+    ? `${job.title} | JoblyHub`
+    : "Job Details | JoblyHub";
+}, [job]);
   const [actionMessage, setActionMessage] = useState('');
   const [savingJob, setSavingJob] = useState(false);
 

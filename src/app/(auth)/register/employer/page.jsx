@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -42,6 +42,9 @@ const categories = [
 ];
 
 export default function EmployerRegister() {
+  useEffect(() => {
+  document.title = "Employer Registration | JoblyHub";
+}, []);
   const router = useRouter();
 
   const [form, setForm] = useState({
