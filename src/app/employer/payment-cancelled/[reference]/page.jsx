@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { XCircle } from "lucide-react";
-
+import "@/styles/App.css";
 export default function PaymentCancelled() {
   const { reference } = useParams();
 
