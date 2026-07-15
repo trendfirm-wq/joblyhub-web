@@ -188,10 +188,19 @@ export default function JobsPage() {
 
       setError("");
     } catch (err) {
-      setError(
-        "Unable to load jobs. Please make sure the backend is running."
-      );
-    } finally {
+  console.error("Jobs API Error:", err);
+
+  if (err.response) {
+    console.log("Status:", err.response.status);
+    console.log("Data:", err.response.data);
+  } else if (err.request) {
+    console.log("No response received");
+  } else {
+    console.log(err.message);
+  }
+
+  setError(err.message);
+}finally {
       setLoadingJobs(false);
     }
   };
