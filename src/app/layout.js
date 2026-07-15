@@ -11,12 +11,6 @@ export const metadata = {
   description:
     "Connecting Opportunities, Building Trust. Find jobs, recruit top talent, and grow your career with JoblyHub.",
 
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-    shortcut: "/icon.png",
-  },
-
   openGraph: {
     title: "JoblyHub",
     description:
