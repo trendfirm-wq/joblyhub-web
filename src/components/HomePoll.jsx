@@ -1,0 +1,223 @@
+"use client";
+import { useEffect, useMemo, useState } from 'react';
+import './HomePoll.css';
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://joblyhub-tc8k.onrender.com/api";
+
+const POLL_SLUG = 'home-job-hunting-duration';
+
+const pollOptions = [
+  'Less than 1 month',
+  '1–3 months',
+  '3–6 months',
+  'Over 6 months',
+];
+
+const defaultVotes = {
+  'Less than 1 month': 0,
+  '1–3 months': 0,
+  '3–6 months': 0,
+  'Over 6 months': 0,
+};
+
+const GUEST_ID_KEY = 'joblyhub_poll_guest_id';
+
+const getGuestId = () => {
+  if (typeof window === "undefined") return "";
+
+  let guestId = localStorage.getItem(GUEST_ID_KEY);
+
+  if (!guestId) {
+    guestId =
+      crypto?.randomUUID?.() ||
+      `guest_${Date.now()}_${Math.random()
+        .toString(36)
+        .slice(2)}`;
+
+    localStorage.setItem(GUEST_ID_KEY, guestId);
+  }
+
+  return guestId;
+};
+
+export default function HomePoll() {
+  const [selected, setSelected] = useState('');
+  const [votes, setVotes] = useState(defaultVotes);
+  const [loading, setLoading] = useState(true);
+  const [voting, setVoting] = useState(false);
+  const [error, setError] = useState('');
+
+ const [token, setToken] = useState("");
+const [guestId, setGuestId] = useState("");
+
+  const totalVotes = useMemo(() => {
+    return Object.values(votes).reduce(
+      (sum, value) => sum + Number(value || 0),
+      0
+    );
+  }, [votes]);
+
+  const fetchPoll = async () => {
+    try {
+      setLoading(true);
+      setError('');
+
+      const res = await fetch(
+        `${API_URL}/polls/${POLL_SLUG}?guestId=${guestId}`,
+        {
+          headers: token
+            ? {
+                Authorization: `Bearer ${token}`,
+              }
+            : {},
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Unable to load poll');
+      }
+
+      setVotes({ ...defaultVotes, ...data.results });
+      setSelected(data.userVote || '');
+    } catch (err) {
+      setError(err.message || 'Unable to load poll');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  const storedToken =
+    localStorage.getItem("joblyhubToken") ||
+    localStorage.getItem("token") ||
+    localStorage.getItem("authToken") ||
+    localStorage.getItem("userToken") ||
+    "";
+
+  setToken(storedToken);
+
+  const id = getGuestId();
+
+  setGuestId(id);
+}, []);
+
+useEffect(() => {
+  if (!guestId) return;
+
+  fetchPoll();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [guestId]);
+
+  const handleVote = async (option) => {
+    try {
+      if (selected === option) return;
+
+      setVoting(true);
+      setError('');
+
+      const res = await fetch(`${API_URL}/polls/${POLL_SLUG}/vote`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({
+          option,
+          guestId,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Unable to record vote');
+      }
+
+      setVotes({ ...defaultVotes, ...data.results });
+      setSelected(data.userVote || option);
+    } catch (err) {
+      setError(err.message || 'Unable to record vote');
+    } finally {
+      setVoting(false);
+    }
+  };
+
+  return (
+    <section className="home-poll">
+      <div className="poll-card">
+        <div className="poll-top">
+          <span className="poll-badge">Community Poll</span>
+          {selected && <span className="poll-status">Vote recorded</span>}
+        </div>
+
+        <h2>How long have you been job hunting?</h2>
+
+        <p>
+          Your response helps JoblyHub understand job seekers’ real challenges.
+        </p>
+
+        {loading ? (
+          <div className="poll-loading">Loading poll...</div>
+        ) : (
+          <div className="poll-options">
+            {pollOptions.map((option) => {
+              const count = Number(votes[option] || 0);
+              const percentage =
+                totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
+
+              const isSelected = selected === option;
+
+              return (
+                <button
+                  type="button"
+                  key={option}
+                  className={`poll-option ${isSelected ? 'selected' : ''} ${
+                    selected ? 'voted' : ''
+                  }`}
+                  onClick={() => handleVote(option)}
+                  disabled={voting}
+                >
+                  {selected && (
+                    <span
+                      className="poll-fill"
+                      style={{ width: `${percentage}%` }}
+                    />
+                  )}
+
+                  <span className="poll-content">
+                    <span className="poll-dot" />
+                    <span className="poll-label">{option}</span>
+                  </span>
+
+                  {selected && (
+                    <span className="poll-result">
+                      <strong>{percentage}%</strong>
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {error && <div className="poll-error">{error}</div>}
+
+        <div className="poll-footer">
+          {selected ? (
+            <span>
+              · You selected: <strong>{selected}</strong>
+            </span>
+          ) : (
+            <span>Select one option to vote.</span>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
