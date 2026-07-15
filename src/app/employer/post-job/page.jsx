@@ -83,8 +83,43 @@ const jobTypes = [
 export default function EmployerPostJob() {
 const router = useRouter();
 
-  const user = JSON.parse(localStorage.getItem('joblyhubUser') || '{}');
-  const token = localStorage.getItem('joblyhubToken');
+ const [user, setUser] = useState({});
+const [token, setToken] = useState("");
+useEffect(() => {
+  if (typeof window === "undefined") return;
+
+  const storedUser = JSON.parse(
+    localStorage.getItem("joblyhubUser") || "{}"
+  );
+
+  const storedToken =
+    localStorage.getItem("joblyhubToken") || "";
+
+  setUser(storedUser);
+  setToken(storedToken);
+}, []);
+
+useEffect(() => {
+  if (!user || Object.keys(user).length === 0) return;
+
+  setForm((prev) => ({
+    ...prev,
+    companyName: user.companyName || "",
+    industry: industries.includes(user.companyIndustry)
+      ? user.companyIndustry
+      : "",
+    companyWebsite: user.companyWebsite || "",
+    companyDescription: user.companyDescription || "",
+    applicationEmail: user.email || "",
+    contactName: user.name || "",
+    contactEmail: user.email || "",
+    contactPhone: user.phone || "",
+  }));
+
+  setLogoPreview(user.companyLogo || "");
+}, [user]);
+
+
 
   const [form, setForm] = useState({
     title: '',
