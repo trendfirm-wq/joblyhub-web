@@ -8,7 +8,6 @@ html,
 body{
   width:100%;
   overflow-x:hidden;
-  font-family:Arial,Helvetica,sans-serif;
   background:#fff;
   color:#111827;
 }
@@ -32,6 +31,46 @@ select{
 body {
   padding-top: 76px;
 }
+body {
+  line-height: 1.6;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #f8fafc;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: #475569;
+}
+button,
+.btn {
+  font-weight: 600;
+}
+input,
+textarea,
+select {
+  font-size: 15px;
+  line-height: 1.5;
+}
+::selection {
+  background: #2563eb;
+  color: #fff;
+}
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
 /* ===== Navbar Layout Fix ===== */
 
 html,
@@ -39,7 +78,9 @@ body {
   margin: 0 !important;
   padding: 0 !important;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   padding-top: 76px !important;
 }
