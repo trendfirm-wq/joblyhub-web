@@ -359,3 +359,14 @@
     padding-top: 70px;
   }
 }
+@media (max-width: 980px) {
+
+  .nav-menu.open .nav-links{
+    display:grid !important;
+  }
+
+  .nav-menu.open .nav-actions{
+    display:grid !important;
+  }
+
+}
