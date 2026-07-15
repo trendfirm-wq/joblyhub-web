@@ -37,7 +37,7 @@ export default function PaymentCancelled() {
           }}
         >
           <Link
-            href="/pricing"
+            href="/job-payment/[jobId]"
             className="btn btn-primary"
           >
             Try Again

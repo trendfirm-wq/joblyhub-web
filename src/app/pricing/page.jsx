@@ -145,10 +145,10 @@ export default function PricingPage() {
           <div className="pricing-actions">
 
             <Link
-              href="/employer/dashboard"
+              href="/employer/post-job"
               className="btn btn-primary"
             >
-            Back to Dashboard
+              🚀 Post a Job
             </Link>
 
           </div>
