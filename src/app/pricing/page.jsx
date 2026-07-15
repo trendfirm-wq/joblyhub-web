@@ -148,7 +148,7 @@ export default function PricingPage() {
               href="/employer/post-job"
               className="btn btn-primary"
             >
-              🚀 Post a Job
+            Back to Dashboard
             </Link>
 
           </div>
