@@ -129,17 +129,17 @@ export default function Navbar() {
         shrunk ? "navbar-shrunk" : ""
       }`}
     >
-      <div className="container nav-inner">
+      <div className="nav-container nav-inner">
         <Link
           href="/"
           className="logo"
           onClick={closeMenu}
         >
-         <Image
-  src="/images/logo.png"
-  alt="JoblyHub"
-  width={180}
-  height={60}
+       <Image
+  src={logo}
+  alt="JoblyHub Logo"
+  width={logo.width}
+  height={logo.height}
   priority
   className="logo-img"
 />

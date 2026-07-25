@@ -119,7 +119,7 @@ useEffect(() => {
     contactPhone: user.phone || "",
   }));
 
-  setLogoPreview(user.companyLogo || "");
+
 }, [user]);
 
 
@@ -152,9 +152,6 @@ useEffect(() => {
     contactPhone: user.phone || '',
     
   });
-
-  const [companyLogo, setCompanyLogo] = useState(null);
-  const [logoPreview, setLogoPreview] = useState(user.companyLogo || '');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   
@@ -245,10 +242,6 @@ const saveDraft = async () => {
 
     formData.append("saveAsDraft", true);
 
-    if (companyLogo) {
-      formData.append("companyLogo", companyLogo);
-    }
-
     await axios.post(`${API_URL}/jobs`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -287,9 +280,6 @@ const saveDraft = async () => {
         formData.append(key, value);
       });
        formData.append("saveAsDraft", false);
-      if (companyLogo) {
-        formData.append('companyLogo', companyLogo);
-      }
 
 const res = await axios.post(`${API_URL}/jobs`, formData, {
   headers: {
@@ -471,35 +461,7 @@ return;
                 />
               </label>
 
-              <label>
-                Company Logo
-                <div className="logo-upload-box">
-                  <input
-                    type="file"
-                    name="companyLogo"
-                    accept="image/png,image/jpeg,image/jpg,image/webp"
-                    onChange={updateLogo}
-                  />
-
-                  <div>
-                    {logoPreview ? (
-                      <img src={logoPreview} alt="Company logo preview" />
-                    ) : (
-                      <UploadCloud size={28} />
-                    )}
-
-                    <span>
-                      {companyLogo
-                        ? companyLogo.name
-                        : logoPreview
-                        ? 'Current company logo'
-                        : 'Upload company logo'}
-                    </span>
-
-                    <small>Optional. PNG, JPG, or WEBP. Max size 2MB.</small>
-                  </div>
-                </div>
-              </label>
+              
 
               <div className="form-section-title">3. Job Details</div>
 

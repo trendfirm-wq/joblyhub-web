@@ -60,7 +60,12 @@ export default function JobDetails() {
     phone: user.phone || '',
     pdf: null,
   });
-
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: "instant",
+  });
+}, []);
   useEffect(() => {
     fetchJob();
     // eslint-disable-next-line react-hooks/exhaustive-deps
