@@ -135,14 +135,21 @@ export default function Navbar() {
           className="logo"
           onClick={closeMenu}
         >
-       <Image
-  src={logo}
-  alt="JoblyHub Logo"
-  width={logo.width}
-  height={logo.height}
-  priority
-  className="logo-img"
-/>
+       <Link
+  href="/"
+  className="logo"
+  onClick={closeMenu}
+>
+  <div className="logo-img-wrap">
+    <Image
+      src={logo}
+      alt="JoblyHub Logo"
+      fill
+      priority
+      className="logo-img"
+    />
+  </div>
+</Link>
         </Link>
 
         <button
