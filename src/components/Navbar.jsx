@@ -130,12 +130,7 @@ export default function Navbar() {
       }`}
     >
       <div className="nav-container nav-inner">
-        <Link
-          href="/"
-          className="logo"
-          onClick={closeMenu}
-        >
-       <Link
+      <Link
   href="/"
   className="logo"
   onClick={closeMenu}
@@ -150,7 +145,6 @@ export default function Navbar() {
     />
   </div>
 </Link>
-        </Link>
 
         <button
           className="mobile-menu-btn"

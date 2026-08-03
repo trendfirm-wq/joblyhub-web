@@ -182,7 +182,7 @@ const canPost =
 
       <main className="dashboard-page">
         <div className="container">
-          <div className="dashboard-top employer-top">
+          <div className="employer-top">
             <div>
               <span>Employer Dashboard</span>
 

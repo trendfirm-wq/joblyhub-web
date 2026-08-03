@@ -8,7 +8,7 @@ import axios from "axios";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import RichTextEditor from "@/components/RichTextEditor";
+import RichTextEditor from "@/components/RichTextEditor/RichTextEditor";
 import "@/styles/App.css";
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||

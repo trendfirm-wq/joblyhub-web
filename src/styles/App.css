@@ -302,26 +302,19 @@
   line-height: 1.7;
 }
 
-@media (max-width: 900px) {
-  .hero {
-    padding-top: 46px;
-  }
-
-  .hero-grid,
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .search-card {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-stats {
-    flex-wrap: wrap;
-  }
+@media (max-width: 768px) {
 
   .hero-panel {
-    min-height: 360px;
+    display: none;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: left;
   }
 }
 .jobs-section {
@@ -8899,4 +8892,187 @@
 
 .payment-status-card p {
   color: #64748b;
+}
+.rich-editor-box {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.rich-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.rich-editor-input .ProseMirror {
+  min-height: 220px;
+  padding: 16px;
+  outline: none;
+  cursor: text;
+}
+
+.rich-editor-input .ProseMirror:focus {
+  outline: none;
+}
+.editor-wrapper{
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.editor-toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    padding:10px;
+    background:#fafafa;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.editor-group{
+    display:flex;
+    gap:4px;
+    padding-right:10px;
+    margin-right:10px;
+    border-right:1px solid #e5e7eb;
+}
+
+.editor-group:last-child{
+    border-right:none;
+}
+
+.editor-btn{
+    width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    border-radius:8px;
+    background:white;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.editor-btn:hover{
+    background:#f3f4f6;
+}
+
+.editor-btn.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+.editor-content{
+    min-height:350px;
+}
+
+.joblyhub-editor{
+    min-height:350px;
+    padding:20px;
+    outline:none;
+}
+
+.joblyhub-editor h1{
+    font-size:2rem;
+    font-weight:700;
+    margin:20px 0 12px;
+}
+
+.joblyhub-editor h2{
+    font-size:1.6rem;
+    font-weight:700;
+    margin:18px 0 10px;
+}
+
+.joblyhub-editor h3{
+    font-size:1.3rem;
+    font-weight:700;
+    margin:16px 0 8px;
+}
+
+.joblyhub-editor p{
+    margin:12px 0;
+    line-height:1.7;
+}
+
+.joblyhub-editor ul,
+.joblyhub-editor ol{
+    margin:12px 0;
+    padding-left:30px;
+}
+
+.joblyhub-editor blockquote{
+    border-left:4px solid #2563eb;
+    padding-left:16px;
+    margin:20px 0;
+    color:#555;
+}
+
+.joblyhub-editor img{
+    max-width:100%;
+    height:auto;
+    border-radius:10px;
+    margin:20px auto;
+    display:block;
+}
+
+.joblyhub-editor a{
+    color:#2563eb;
+    text-decoration:underline;
+}
+
+.joblyhub-editor code{
+    background:#f3f4f6;
+    padding:2px 5px;
+    border-radius:4px;
+}
+
+.joblyhub-editor pre{
+    background:#111827;
+    color:white;
+    padding:16px;
+    border-radius:8px;
+    overflow:auto;
+}
+
+.joblyhub-editor:focus{
+    outline:none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before{
+    content:attr(data-placeholder);
+    color:#9ca3af;
+    float:left;
+    height:0;
+    pointer-events:none;
+}.ProseMirror table{
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0;
+}
+
+.ProseMirror th,
+.ProseMirror td{
+  border:1px solid #d1d5db;
+  padding:10px;
+  min-width:120px;
+}
+
+.ProseMirror th{
+  background:#f3f4f6;
+  font-weight:600;
+}
+
+.ProseMirror .selectedCell{
+  background:#dbeafe;
+}
+
+.ProseMirror table col{
+  min-width:120px;
 }
