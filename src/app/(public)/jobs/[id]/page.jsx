@@ -585,7 +585,25 @@ if (error || !job) {
                   </small>
                 </div>
               )}
+              {job.applicationMethod === "phone" &&
+  job.applicationPhone && (
+    <div className="apply-copy-email-box">
+      <span>Application Phone Number</span>
 
+      <strong>{job.applicationPhone}</strong>
+
+      <a
+        href={`tel:${job.applicationPhone}`}
+        className="btn btn-primary apply-btn"
+      >
+        📞 Call Now
+      </a>
+
+      <small>
+        Call this number to apply for the position.
+      </small>
+    </div>
+)}
               {job.applicationMethod === 'website' && job.applicationLink && (
                 <button
                   type="button"
@@ -626,7 +644,14 @@ if (error || !job) {
                 <span>Industry</span>
                 <strong>{job.industry || 'Not specified'}</strong>
               </div>
+              {job.applicationMethod === "phone" &&
+  job.applicationPhone && (
+    <div className="apply-info">
+      <span>Application Phone</span>
 
+      <strong>{job.applicationPhone}</strong>
+    </div>
+)}
               {job.companyWebsite && (
                 <div className="apply-info">
                   <span>Company Website</span>

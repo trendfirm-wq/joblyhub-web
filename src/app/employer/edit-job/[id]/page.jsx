@@ -119,6 +119,7 @@ useEffect(() => {
     applicationMethod: 'email',
     applicationEmail: '',
     applicationLink: '',
+    applicationPhone: "",
     applicationInstructions: '',
 
     contactName: '',
@@ -200,6 +201,7 @@ useEffect(() => {
         ),
         applicationEmail: res.data.applicationEmail || '',
         applicationLink: res.data.applicationLink || '',
+        applicationPhone: res.data.applicationPhone || "",
         applicationInstructions: res.data.applicationInstructions || '',
 
         contactName: res.data.contactName || '',
@@ -305,7 +307,13 @@ useEffect(() => {
       setMessage('Application website link is required.');
       return false;
     }
-
+     if (
+  form.applicationMethod === "phone" &&
+  !form.applicationPhone.trim()
+) {
+  setMessage("Application phone number is required.");
+  return false;
+}
     return true;
   };
 
@@ -677,9 +685,10 @@ useEffect(() => {
                   onChange={updateForm}
                   required
                 >
-                  <option value="email">Email</option>
-                  <option value="website">Website</option>
-                  <option value="joblyhub">Through JoblyHub</option>
+                 <option value="email">Email</option>
+<option value="phone">Phone Number</option>
+<option value="website">Website</option>
+<option value="joblyhub">Through JoblyHub</option>
                 </select>
               </label>
 
@@ -695,7 +704,19 @@ useEffect(() => {
                   />
                 </label>
               )}
-
+              {form.applicationMethod === "phone" && (
+  <label>
+    Application Phone Number
+    <input
+      type="tel"
+      name="applicationPhone"
+      value={form.applicationPhone}
+      onChange={updateForm}
+      placeholder="+233 24 123 4567"
+      required
+    />
+  </label>
+)}
               {form.applicationMethod === 'website' && (
                 <label>
                   Application Website

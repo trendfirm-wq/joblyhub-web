@@ -75,7 +75,7 @@ const jobTypes = [
   'Full-time',
   'Part-time',
   'Contract',
-  'Internship',
+  'Internship', 
   'Remote',
   'Hybrid',
 ];
@@ -142,10 +142,12 @@ useEffect(() => {
     requirements: '',
     additionalInformation: '',
 
+
     applicationMethod: 'email',
     applicationEmail: user.email || '',
     applicationLink: '',
     applicationInstructions: '',
+    applicationPhone: "",
 
     contactName: user.name || '',
     contactEmail: user.email || '',
@@ -220,7 +222,13 @@ useEffect(() => {
       setMessage('Please provide the website link where applicants should apply.');
       return false;
     }
-
+    if (
+  form.applicationMethod === "phone" &&
+  !form.applicationPhone.trim()
+) {
+  setMessage("Please provide the phone number applicants should call.");
+  return false;
+}
     return true;
   };
 const saveDraft = async () => {
@@ -526,9 +534,10 @@ return;
                   onChange={updateForm}
                   required
                 >
-                  <option value="email">Email</option>
-                  <option value="website">Website</option>
-                  <option value="joblyhub">Through JoblyHub</option>
+                <option value="email">Email</option>
+<option value="phone">Phone Number</option>
+<option value="website">Website</option>
+<option value="joblyhub">Through JoblyHub</option>
                 </select>
               </label>
 
@@ -548,7 +557,22 @@ return;
                   </small>
                 </label>
               )}
-
+              {form.applicationMethod === "phone" && (
+  <label>
+    Application Phone Number
+    <input
+      type="tel"
+      name="applicationPhone"
+      value={form.applicationPhone}
+      onChange={updateForm}
+      placeholder="+233 24 123 4567"
+      required
+    />
+    <small className="form-help-text">
+      Applicants will call this number to apply.
+    </small>
+  </label>
+)}
               {form.applicationMethod === 'website' && (
                 <label>
                   Application Website
