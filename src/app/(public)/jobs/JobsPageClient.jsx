@@ -602,18 +602,10 @@ export default function JobsPage() {
                             key={
                               job._id
                             }
-                            className={`job-card premium-job-card ${
-                              isExpired
-                                ? "expired-job"
-                                : ""
-                            }`}
+                            
                           >
                             <div className="job-card-top">
-                              {isExpired && (
-                                <span className="expired-badge">
-                                  EXPIRED
-                                </span>
-                              )}
+                               
 
                               <div className="job-logo">
                                 {job.companyLogo ? (
