@@ -602,7 +602,11 @@ export default function JobsPage() {
                             key={
                               job._id
                             }
-                            
+                            className={`job-card premium-job-card ${
+                              isExpired
+                                ? "expired-job"
+                                : ""
+                            }`}
                           >
                             <div className="job-card-top">
                                
